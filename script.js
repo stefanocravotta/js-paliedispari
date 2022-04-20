@@ -14,3 +14,33 @@ Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione)
 Dichiariamo chi ha vinto.
 Bonus: L’inserimento avviene tramite un campo input
 */
+
+
+const btnPalindromo = document.getElementById("btn-palindromo");
+let output = document.getElementById("risultato");
+
+
+btnPalindromo.addEventListener('click', function() {
+
+    const parolaUtente = document.getElementById("input-palindromo").value ;
+
+    reverse(parolaUtente);
+
+    let parolaReverse = reverse(parolaUtente);
+    
+    if(parolaUtente === parolaReverse){
+        output.innerHTML = `La parola ${parolaUtente} è un palindromo`;
+    }else{
+        output.innerHTML = `La parola ${parolaUtente} non è un palindromo`;
+    }
+    
+})
+
+
+/* FUNCTIONS */
+
+function reverse(word) {
+    
+    return word.split("").reverse().join("");
+
+ }
