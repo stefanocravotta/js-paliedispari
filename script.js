@@ -27,12 +27,19 @@ btnPalindromo.addEventListener('click', function() {
     reverse(parolaUtente);
 
     let parolaReverse = reverse(parolaUtente);
-    
-    if(parolaUtente === parolaReverse){
-        output.innerHTML = `La parola ${parolaUtente} è un palindromo`;
+
+    if(isNaN(parolaUtente)){
+            if(parolaUtente === parolaReverse){
+            output.innerHTML = `La parola ${parolaUtente} è un palindromo`;
+        }else{
+            output.innerHTML = `La parola ${parolaUtente} non è un palindromo`;
+        }
     }else{
-        output.innerHTML = `La parola ${parolaUtente} non è un palindromo`;
+        alert("Inserire una parola !")
+
     }
+    
+    
     
 })
 
@@ -46,7 +53,7 @@ const numeroMin = 1;
 const numeroMax = 5;
 let verifica = false;
 let scelta = "pari";
-let vittoria = true;
+let error = false;
 
 btnPariDispari.addEventListener('click', function(){
     
@@ -56,20 +63,30 @@ btnPariDispari.addEventListener('click', function(){
 
     pariDispari(numeroPc, parseInt(numeroUtente));
 
+    if(numeroUtente > numeroMax || numeroUtente < 1){
+        alert("Inserire un numero da 1 a 5 !")
 
-    if(verifica && sceltaPariDispari === "pari"){
-        outputPariDispari.innerHTML = `La somma del numero scelto da te "${numeroUtente}" <br> e il numero random scelto dal computer "${numeroPc}" <br> è = ${pariDispari(numeroPc, parseInt(numeroUtente))} <br> quindi HAI VINTO!!!!`;
-        console.log(verifica, scelta);
-    }else if(verifica && sceltaPariDispari === "dispari"){
-        outputPariDispari.innerHTML = `La somma del numero scelto da te "${numeroUtente}" <br> e il numero random scelto dal computer "${numeroPc}" <br> è = ${pariDispari(numeroPc, parseInt(numeroUtente))} <br> quindi HAI PERSO!!!!`;
-        console.log(verifica, scelta);
-    }else if(!(verifica) && sceltaPariDispari === "dispari"){
-        outputPariDispari.innerHTML = `La somma del numero scelto da te "${numeroUtente}" <br> e il numero random scelto dal computer "${numeroPc}" <br> è = ${pariDispari(numeroPc, parseInt(numeroUtente))} <br> quindi HAI VINTO!!!!`;
-        console.log(verifica, scelta);
-    }else if(!(verifica) && sceltaPariDispari === "pari"){
-        outputPariDispari.innerHTML = `La somma del numero scelto da te "${numeroUtente}" <br> e il numero random scelto dal computer "${numeroPc}" <br> è = ${pariDispari(numeroPc, parseInt(numeroUtente))} <br> quindi HAI PERSO!!!!`;
-        console.log(verifica, scelta);
+    }else{
+        if(verifica && sceltaPariDispari === "pari"){
+                outputPariDispari.innerHTML = `La somma del numero scelto da te "${numeroUtente}" <br> e il numero random scelto dal computer "${numeroPc}" <br> è = ${pariDispari(numeroPc, parseInt(numeroUtente))} <br> quindi HAI VINTO!!!!`;
+                console.log(verifica, scelta);
+            }else if(verifica && sceltaPariDispari === "dispari"){
+                outputPariDispari.innerHTML = `La somma del numero scelto da te "${numeroUtente}" <br> e il numero random scelto dal computer "${numeroPc}" <br> è = ${pariDispari(numeroPc, parseInt(numeroUtente))} <br> quindi HAI PERSO!!!!`;
+                console.log(verifica, scelta);
+            }else if(!(verifica) && sceltaPariDispari === "dispari"){
+                outputPariDispari.innerHTML = `La somma del numero scelto da te "${numeroUtente}" <br> e il numero random scelto dal computer "${numeroPc}" <br> è = ${pariDispari(numeroPc, parseInt(numeroUtente))} <br> quindi HAI VINTO!!!!`;
+                console.log(verifica, scelta);
+            }else if(!(verifica) && sceltaPariDispari === "pari"){
+                outputPariDispari.innerHTML = `La somma del numero scelto da te "${numeroUtente}" <br> e il numero random scelto dal computer "${numeroPc}" <br> è = ${pariDispari(numeroPc, parseInt(numeroUtente))} <br> quindi HAI PERSO!!!!`;
+                console.log(verifica, scelta);
+            }else{
+                outputPariDispari.innerHTML = "Inserisci i dati corretti !"
+            }
+
     }
+
+
+    
 
 })
 
