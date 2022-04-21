@@ -20,28 +20,24 @@ const btnPalindromo = document.getElementById("btn-palindromo");
 let output = document.getElementById("risultato");
 
 
-btnPalindromo.addEventListener('click', function() {
+btnPalindromo.addEventListener('click', initVerifica);
 
-    const parolaUtente = document.getElementById("input-palindromo").value ;
-
-    reverse(parolaUtente);
-
-    let parolaReverse = reverse(parolaUtente);
-
+function initVerifica() {
+    
+    const parolaUtente = document.getElementById("input-palindromo").value;
+    
+    const parolaReverse = reverse(parolaUtente);
+    
     if(isNaN(parolaUtente)){
-            if(parolaUtente === parolaReverse){
+        if(parolaUtente.toLowerCase() === parolaReverse.toLowerCase()){
             output.innerHTML = `La parola ${parolaUtente} è un palindromo`;
         }else{
             output.innerHTML = `La parola ${parolaUtente} non è un palindromo`;
         }
     }else{
-        alert("Inserire una parola !")
-
-    }
-    
-    
-    
-})
+         alert("Inserire una parola !");
+    }             
+}
 
 
 
@@ -57,7 +53,7 @@ let error = false;
 
 btnPariDispari.addEventListener('click', function(){
     
-    const numeroUtente = document.getElementById("pari-dispari").value ;
+    const numeroUtente = document.getElementById("pari-dispari").value;
     const numeroPc = getRandomNumber(numeroMin, numeroMax);
     const sceltaPariDispari = document.getElementById("scelta").value;
 
@@ -96,8 +92,12 @@ btnPariDispari.addEventListener('click', function(){
 
 function reverse(word) {
     
-    return word.split("").reverse().join("");
-
+    //return word.split("").reverse().join("");
+    let reverseString ='';
+    for( let i = word.length - 1; i >= 0; i--){
+        reverseString += word[i];
+    }
+    return reverseString;
  }
 
 // 2 PARI E DISPARI
